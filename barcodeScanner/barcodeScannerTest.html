@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <!-- Nicola Zordan: 4/30/2019 -->
+      <!-- needs https to work on iPhone -->
+      <!-- https://nicolazordan.github.io/NicolaZordan/ -->
+      <!-- simple scan to input field NZ-->
+
+      <!-- Scan to input example: https://serratus.github.io/quaggaJS/v1.0.0-beta.1/examples/scan-to-input/ -->
+
+    <title>Barcode Scanner JavaScript NZ</title>
+
+    <!--
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    -->
+    <style> 
+    </style>
+  </head>
+
+  <body>
+        <form name="inputForm">
+                    UPC:
+                    <input name="barcodeField" type="text" 
+                    /><button type="button" onClick="document.inputForm.barcodeField.value=''">clr</button> 
+                    
+                    <button type="button" 
+                    onClick="barcodeScanner.start()"
+                    >
+                        <img src="barcodeButton.png" height="20"/>
+                    </button>
+                    <br>
+
+        </form>        
+
+    <script src="jquery-1.9.0.min.js" src="vendor/jquery-1.9.0.min.js" type="text/javascript"></script>
+    <script src="quagga.js"  type="text/javascript"></script>
+    
+    <!-- nz Quagga Bar Code Scanner -->
+      <div id="interactive" class="viewport" style="display:none;">
+          <!-- x button to cancel camera barcode scanning -->
+          <input type="button" onClick="barcodeScanner.stop()" value="x"/>
+          <br/>
+      </div>
+
+    <!-- /nz Quagga Bar Code Scanner -->
+    <script src="barcodeScanner.js" type="text/javascript"></script>
+    <!-- nz Quagga use page specific -->
+    <script>
+
+        // barcodeScanner customization for page
+
+        barcodeScanner.inputField=document.inputForm.barcodeField;
+
+        barcodeScanner.scannedFunction= function  (barcode) {
+            console.log("Scanned barcode: ["+barcode+"]");
+        }
+
+    </script>
+    <!-- /nz Quagga use page specific -->
+
+
+  </body>
+</html>
